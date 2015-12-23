@@ -1,0 +1,11 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+Meat
+
+# THANKS
+Thanks to everyone who did possible
+
+# TECHNOLOGY COLOPHON
+CSS3, HTML5, node.js, react.js, d3.js

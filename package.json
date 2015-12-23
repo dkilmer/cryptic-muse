@@ -1,0 +1,47 @@
+{
+  "name": "cryptic-muse",
+  "version": "0.0.1",
+  "description": "Cryptic Muse - word pattern search server",
+  "main": "server.js",
+  "scripts": {
+    "env": "env",
+    "start": "node server.js",
+    "clean": "rimraf dist",
+    "build:init": "copyfiles -u 1 app/* dist && copyfiles -u 3 node_modules/bootstrap/dist/css/bootstrap.min.* dist && copyfiles -u 2 node_modules/font-awesome/css/font-awesome.min.css dist && copyfiles -u 2 node_modules/font-awesome/fonts/* dist",
+    "build:js": "mkdirp dist/js && browserify app/js/index.js -o dist/js/bundle.js -t [ babelify --presets [ es2015 react ] ]",
+    "watch:js": "watch 'npm run build:js' app/js/",
+    "build:css": "copyfiles -u 1 app/css/* dist",
+    "watch:css": "watch 'npm run build:css' app/css/",
+    "build:html": "copyfiles -u 1 app/*.html dist",
+    "watch:html": "watch 'npm run build:html' app/",
+    "build": "npm run build:init && npm run build:html && npm run build:css && npm run build:js",
+    "build:watch": "npm run build && parallelshell 'npm run watch:js' 'npm run watch:css' 'npm run watch:html'"
+  },
+  "author": "David Kilmer",
+  "license": "Apache 2",
+  "dependencies": {
+    "async": "^1.5.0",
+    "sqlite3": "^3.1.1",
+    "bootstrap": "^3.3.6",
+    "d3": "^3.5.12",
+    "font-awesome": "^4.4.0",
+    "immutable": "^3.7.6",
+    "react": "^0.14.0-rc1",
+    "react-dom": "^0.14.3",
+    "react-redux": "^4.0.4",
+    "redux": "^3.0.5"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.1.6",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1",
+    "copyfiles": "latest",
+    "http-server": "latest",
+    "mkdirp": "latest",
+    "parallelshell": "latest",
+    "rimraf": "latest",
+    "watch": "0.16.0"
+  }
+}
