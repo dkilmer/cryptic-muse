@@ -41,7 +41,7 @@ function handleStatic(req, res) {
 //We need a function which handles requests and send response
 function handleRequest(req, res) {
 	//res.end('It Works!! Path Hit: ' + req.url);
-	res.writeHead(200, {'Content-Type': 'text/event-stream', "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"});
+	res.writeHead(200, {'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"});
 	//res.header("Access-Control-Allow-Origin", "*");
 	//res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	console.log(req.url);
@@ -82,3 +82,5 @@ server.listen(PORT, function() {
 	//Callback triggered when server is successfully listening. Hurray!
 	console.log("Server listening on: http://localhost:%s", PORT);
 });
+
+module.exports = server;
