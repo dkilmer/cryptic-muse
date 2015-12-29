@@ -76,6 +76,7 @@ a {
     border-bottom: 3px solid #1588ce;
 }
 
-.data-word {
+span.data-word {
     padding-right: 1em;
+    cursor: pointer;
 }

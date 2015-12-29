@@ -5,7 +5,7 @@ var DataTable = React.createClass({
     return (
       <table className="table table-bordered data-table">
         <DataTableHeader searchHeader={this.props.searchHeader} queryHeader={this.props.queryHeader}/>
-        <DataTableBody data={this.props.data}/>
+        <DataTableBody data={this.props.data} onSearchChange={this.props.onSearchChange}/>
       </table>
     );
   }
@@ -28,7 +28,7 @@ var DataTableBody = React.createClass({
       {
         this.props.data.map((d,i) => {
           return (
-              <DataTableRow key={i} values={d}/>
+              <DataTableRow key={i} values={d} onSearchChange={this.props.onSearchChange}/>
           );
         })
       }
@@ -43,7 +43,7 @@ var DataTableRow = React.createClass({
       <tr><td>
         {
           this.props.values.map((v,i) => {
-            return (<DataTableCell key={i}>{v}</DataTableCell>);
+            return (<DataTableCell key={i} onSearchChange={this.props.onSearchChange}>{v}</DataTableCell>);
           })
         }
       </td></tr>
@@ -52,9 +52,13 @@ var DataTableRow = React.createClass({
 });
 
 var DataTableCell = React.createClass({
+  wordClick: function(event) {
+    this.props.onSearchChange(this.props.children);
+  },
+
   render: function() {
     return (
-      <span className="data-word">{this.props.children}</span>
+      <span className="data-word" onClick={this.wordClick}>{this.props.children}</span>
     );
   }
 });
