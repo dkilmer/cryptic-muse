@@ -7,7 +7,7 @@
     "env": "env",
     "start": "node server.js",
     "clean": "rimraf dist",
-    "build:init": "copyfiles -u 1 app/* dist && copyfiles -u 3 node_modules/bootswatch/yeti/bootstrap.min.* dist/css && copyfiles -u 2 node_modules/font-awesome/css/font-awesome.min.css dist && copyfiles -u 2 node_modules/font-awesome/fonts/* dist",
+    "build:init": "copyfiles -u 1 app/* dist && copyfiles -u 3 node_modules/bootswatch/cerulean/bootstrap.min.* dist/css && copyfiles -u 2 node_modules/font-awesome/css/font-awesome.min.css dist && copyfiles -u 2 node_modules/font-awesome/fonts/* dist",
     "build:js": "mkdirp dist/js && browserify app/js/index.js -o dist/js/bundle.js -t [ babelify --presets [ es2015 react ] ]",
     "watch:js": "watch 'npm run build:js' app/js/",
     "build:css": "copyfiles -u 1 app/css/* dist",
