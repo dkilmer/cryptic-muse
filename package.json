@@ -7,7 +7,7 @@
     "env": "env",
     "start": "node server.js",
     "clean": "rimraf dist",
-    "build:init": "copyfiles -u 1 app/* dist && copyfiles -u 3 node_modules/bootstrap/dist/css/bootstrap.min.* dist && copyfiles -u 2 node_modules/font-awesome/css/font-awesome.min.css dist && copyfiles -u 2 node_modules/font-awesome/fonts/* dist",
+    "build:init": "copyfiles -u 1 app/* dist && copyfiles -u 3 node_modules/bootswatch/yeti/bootstrap.min.* dist/css && copyfiles -u 2 node_modules/font-awesome/css/font-awesome.min.css dist && copyfiles -u 2 node_modules/font-awesome/fonts/* dist",
     "build:js": "mkdirp dist/js && browserify app/js/index.js -o dist/js/bundle.js -t [ babelify --presets [ es2015 react ] ]",
     "watch:js": "watch 'npm run build:js' app/js/",
     "build:css": "copyfiles -u 1 app/css/* dist",
@@ -19,7 +19,9 @@
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js  --recursive 'test/**/*.@(js|jsx)'"
   },
   "babel": {
-    "presets": ["es2015"]
+    "presets": [
+      "es2015"
+    ]
   },
   "author": "David Kilmer",
   "license": "Apache 2",
@@ -41,6 +43,7 @@
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "babelify": "^7.2.0",
+    "bootswatch": "^3.3.6",
     "browserify": "^12.0.1",
     "chai": "^3.4.1",
     "chai-http": "^1.0.0",

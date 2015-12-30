@@ -16,7 +16,7 @@ function reduce(state = INITIAL_STATE, action) {
 	switch(action.type) {
 		case SEARCH_BEGIN:
 			return {
-				ui: {queryInProgress: true, searchText: state.ui.searchText},
+				ui: {queryInProgress: true, searchText: action.search.query},
 				search: action.search,
 				results: []
 			};

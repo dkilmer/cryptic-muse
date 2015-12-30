@@ -1,9 +1,15 @@
 import React from 'react';
 
 var DataTable = React.createClass({
+  shouldComponentUpdate: function(nextProps, nextState) {
+    var should = (nextProps.data !== this.props.data);
+    console.log('-=-= shouldComponentUpdate: '+(should));
+    return (should);
+  },
   render: function() {
+    console.log('-=-= i render');
     return (
-      <table className="table table-bordered data-table">
+      <table className="table table-striped">
         <DataTableHeader searchHeader={this.props.searchHeader} queryHeader={this.props.queryHeader}/>
         <DataTableBody data={this.props.data} onSearchChange={this.props.onSearchChange}/>
       </table>
